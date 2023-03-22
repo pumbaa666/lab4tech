@@ -1,7 +1,5 @@
-The 2020 Scrum Guide - HIGHLIGHTS
+[The 2020 Scrum Guide](https://scrumguides.org/scrum-guide.html) HIGHLIGHTS [by Pumbaa](https://github.com/pumbaa666/lab4tech/tree/main/ProductOwner)
 ===
-
-Source : [scrumguides.org](https://scrumguides.org/scrum-guide.html)
 
 Scrum Definition
 ---
@@ -9,16 +7,17 @@ Scrum Definition
 Scrum exists only in its entirety and functions well as a container for other techniques, methodologies, and practices.
 Rather than provide people with detailed instructions, Scrum guide their relationships and interactions.
 Scrum employs an incremental approach to optimize predictability and to control risk.
+It consist of **Three Pillars** (Transparency > Inspection > Adaptation) and **Five Values** (Courage, Focus, Commitment, Respect, Openness)
 
 Scrum is a lightweight framework
 
-	- The P.O. orders the work for a problem into a Backlog.
-	- The Team turns a selection of the work into an Increment of value during a Sprint.
-	- The Team and its stakeholders inspect the results and adjust for the next Sprint.
+ - The P.O. orders the work for a problem into a Backlog.
+ - The Team turns a selection of the work into an Increment of value during a Sprint.
+ - The Team and its stakeholders inspect the results and adjust for the next Sprint.
 
 Sprint
 ---
-The Sprint combines three formal events : Transparency > Inspection > Adaptation 
+
 Short : a month or shorter
 
 The **Product Owner** ensures that **attendees** are prepared to discuss the most important Product Backlog items and how they map to the Product Goal.
