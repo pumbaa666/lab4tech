@@ -1,7 +1,7 @@
-https://scrumguides.org/scrum-guide.html
-
-HIGHLIGHTS
+The 2020 Scrum Guide - HIGHLIGHTS
 ===
+
+Source : [scrumguides.org](https://scrumguides.org/scrum-guide.html)
 
 Scrum Definition
 ---
