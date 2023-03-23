@@ -1,5 +1,8 @@
-[The 2020 Scrum Guide](https://scrumguides.org/scrum-guide.html) HIGHLIGHTS [by Pumbaa](https://github.com/pumbaa666/lab4tech/tree/main/ProductOwner)
+The 2020 Scrum Guide - HIGHLIGHTS by Pumbaa
 ===
+
+In order to obtain a _PSPO I Scrum Certification_ I compiled some highlights from [The 2020 Scrum Guide](https://scrumguides.org/scrum-guide.html).
+You can find all my personal documentation and files on my dedicated [github repository](https://github.com/pumbaa666/lab4tech/tree/main/ProductOwner).
 
 Scrum Definition
 ---
