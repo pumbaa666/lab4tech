@@ -7,7 +7,8 @@ Scrum Definition
 Scrum exists only in its entirety and functions well as a container for other techniques, methodologies, and practices.
 Rather than provide people with detailed instructions, Scrum guide their relationships and interactions.
 Scrum employs an incremental approach to optimize predictability and to control risk.
-It consist of **Three Pillars** (Transparency > Inspection > Adaptation) and **Five Values** (Courage, Focus, Commitment, Respect, Openness)
+It consist of **Three Pillars** (Transparency > Inspection > Adaptation) and **Five Values** (Courage, Focus, Commitment, Respect, Openness).
+It should be used for complex projects. If you are able to predict your work more than 3 sprints ahead you should not be doing Scrum as your product is not complex enough.
 
 Scrum is a lightweight framework
 
@@ -21,6 +22,11 @@ Sprint
 Short : a month or shorter
 
 The **Product Owner** ensures that **attendees** are prepared to discuss the most important Product Backlog items and how they map to the Product Goal.
+He is [one persone](https://www.scrum.org/resources/blog/why-you-need-only-one-product-owner), not a committee.
+He can be helped by other persons, but he needs to make the decisions.
+One Product Backlog means we need one Product Owner. It creates the transparency required for proper empiricism.
+Having many POs encourages micromanagement of teams, requires coordination and bring unclear responsibility.
+
 
 *How will the chosen work get done?*
 For each Product Backlog item, the Developers plan the work. This is done by decomposing Product Backlog items into smaller work items of one day or less. How this is done is at the **sole discretion of the Developers**.
