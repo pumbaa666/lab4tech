@@ -38,6 +38,7 @@ The **Product Goal** describes a future state of the product which can serve as 
 The **Product Backlog** is an emergent, ordered list of what is needed to improve the product.
 **Sprint Planning** initiates the Sprint. 8h or shorter.
 The **Sprint Backlog** includes The Sprint Goal, the Product Backlog items selected for the Sprint, plus the plan for delivering them.
+It is [flexible](https://www.scrum.org/resources/blog/myth-2-sprint-backlog-cant-change-during-sprint), as long as changes do not distract from the focus on the *Sprint Goal*. Could be done during the Daily Scrum.
 The **Sprint Review** inspect the outcome of the Sprint and determine future adaptations. The Product Backlog may also be adjusted to meet new opportunities. It's a _working session_, not a _presentation_ ! 4h or shorter.
 The **Sprint Retrospective** plan ways to increase quality and effectiveness, identifies what went well during the Sprint and what problems it encountered. You can add things to next Sprint Backlog. 3h or shorter.
 
