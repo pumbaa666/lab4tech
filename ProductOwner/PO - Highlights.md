@@ -7,6 +7,8 @@ You can find all my personal documentation and files on my dedicated [github rep
 Scrum Definition
 ---
 
+_"[Scrum](https://www.scrum.org/resources/blog/myth-3-scrum-releases-are-done-only-end-sprint) is intended as a simple, yet sufficient framework for complex product delivery. Scrum is not a one-size-fits-all solution, a silver bullet or a complete methodology. Instead, Scrum provides the minimal boundaries within which teams can self-organize to solve a complex problem using an empirical approach."_
+
 Scrum exists only in its entirety and functions well as a container for other techniques, methodologies, and practices.
 Rather than provide people with detailed instructions, Scrum guide their relationships and interactions.
 Scrum employs an incremental approach to optimize predictability and to control risk.
