@@ -35,11 +35,17 @@ Having many POs encourages micromanagement of teams, requires coordination and b
 For each Product Backlog item, the Developers plan the work. This is done by decomposing Product Backlog items into smaller work items of one day or less. How this is done is at the **sole discretion of the Developers**.
 
 The **Product Goal** describes a future state of the product which can serve as a target for the Scrum Team to plan against. The Product Goal is in the Product Backlog. The rest of the Product Backlog emerges to define "what" will fulfill the Product Goal.
+
+The **Sprint Goal** is the single objective for the Sprint.  The Sprint Goal creates coherence and focus, encouraging the Scrum Team to work together.
+
+It is created during the *Sprint Planning event* and then added to the *Sprint Backlog*. If the work turns out to be **different than they expected**, they collaborate with the Product Owner to **negotiate the scope** of the Sprint Backlog within the Sprint without affecting the Sprint Goal.
+
 The **Product Backlog** is an emergent, ordered list of what is needed to improve the product.
 **Sprint Planning** initiates the Sprint. 8h or shorter.
 The **Sprint Backlog** includes The Sprint Goal, the Product Backlog items selected for the Sprint, plus the plan for delivering them.
 It is [flexible](https://www.scrum.org/resources/blog/myth-2-sprint-backlog-cant-change-during-sprint), as long as changes do not distract from the focus on the *Sprint Goal*. Could be done during the Daily Scrum.
 The **Sprint Review** inspect the outcome of the Sprint and determine future adaptations. The Product Backlog may also be adjusted to meet new opportunities. It's a _working session_, not a _presentation_ ! 4h or shorter.
+They are an opportunitie to collect user and stakeholder feedbacks.
 The **Sprint Retrospective** plan ways to increase quality and effectiveness, identifies what went well during the Sprint and what problems it encountered. You can add things to next Sprint Backlog. 3h or shorter.
 
 Work cannot be considered part of an **Increment** unless it meets the **Definition of Done**.
