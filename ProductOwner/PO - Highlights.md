@@ -12,51 +12,71 @@ _"[Scrum](https://www.scrum.org/resources/blog/myth-3-scrum-releases-are-done-on
 Scrum exists only in its entirety and functions well as a container for other techniques, methodologies, and practices.
 Rather than provide people with detailed instructions, Scrum guide their relationships and interactions.
 Scrum employs an incremental approach to optimize predictability and to control risk.
-It consist of **Three Pillars** (Transparency > Inspection > Adaptation) and **Five Values** (Courage, Focus, Commitment, Respect, Openness).
+It consist of **Three Pillars** (_Transparency_ > _Inspection_ > _Adaptation_) and **Five Values** (_Courage_, _Focus_, _Commitment_, _Respect_, _Openness_).
 It should be used for complex projects. If you are able to predict your work more than 3 sprints ahead you should not be doing Scrum as your product is not complex enough.
 
 Scrum is a lightweight framework
 
- - The P.O. orders the work for a problem into a Backlog.
- - The Team turns a selection of the work into an Increment of value during a Sprint.
- - The Team and its stakeholders inspect the results and adjust for the next Sprint.
+ - The _Product Owner_ orders the work for a problem into a _Backlog_.
+ - The _Scrum Team_ turns a selection of the work into an _Increment_ of value during a _Sprint_.
+ - The _Scrum Team_ and its stakeholders inspect the results and adjust for the next _Sprint_.
+
+[**Forecasting**](https://www.scrum.org/resources/blog/art-product-backlog-refinement) : Scrum does not forbid up-front planning.  
 
 Sprint
 ---
 
-Short : a month or shorter
+Short : a month or shorter.
 
-The **Product Owner** ensures that **attendees** are prepared to discuss the most important Product Backlog items and how they map to the Product Goal.
+Product Owner
+---
+
+The **Product Owner** ensures that **attendees** are prepared to discuss the most important __Product Backlog_ Items_ and how they map to the _Product Goal_.
+
 He is [one persone](https://www.scrum.org/resources/blog/why-you-need-only-one-product-owner), not a committee.
 He can be helped by other persons, but he needs to make the decisions.
-One Product Backlog means we need one Product Owner. It creates the transparency required for proper empiricism.
-Having many POs encourages micromanagement of teams, requires coordination and bring unclear responsibility.
+
+One _Product Backlog_ means we need one _Product Owner_. It creates the transparency required for proper empiricism.
+Having many _Product Owners_ encourages micromanagement of teams, requires coordination and bring unclear responsibility.
 
 
-*How will the chosen work get done?*
-For each Product Backlog item, the Developers plan the work. This is done by decomposing Product Backlog items into smaller work items of one day or less. How this is done is at the **sole discretion of the Developers**.
+**How will the chosen work get done?**
+For each _Product Backlog_ item, the Developers plan the work. This is done by decomposing _Product Backlog_ items into smaller work items of one day or less. How this is done is at the **sole discretion of the Developers**.
 
-The **Product Goal** describes a future state of the product which can serve as a target for the Scrum Team to plan against. The Product Goal is in the Product Backlog. The rest of the Product Backlog emerges to define "what" will fulfill the Product Goal.
+Product Goal and Sprint Goal
+---
 
-The **Sprint Goal** is the single objective for the Sprint.  The Sprint Goal creates coherence and focus, encouraging the Scrum Team to work together.
+The **Product Goal** describes a future state of the product which can serve as a target for the _Scrum Team_ to plan against. The _Product Goal_ is in the _Product Backlog_. The rest of the _Product Backlog_ emerges to define "what" will fulfill the _Product Goal_.
 
-It is created during the *Sprint Planning event* and then added to the *Sprint Backlog*. If the work turns out to be **different than they expected**, they collaborate with the Product Owner to **negotiate the scope** of the Sprint Backlog within the Sprint without affecting the Sprint Goal.
+The **Sprint Goal** is the single objective for the Sprint.  The Sprint Goal creates coherence and focus, encouraging the _Scrum Team_ to work together.
+
+It is created during the *Sprint Planning* event and then added to the *Sprint Backlog*. If the work turns out to be **different than they expected**, they collaborate with the Product Owner to **negotiate the scope** of the Sprint Backlog within the _Sprint_ without affecting the _Sprint Goal_.
+
+Product Backlog and Sprint Backlog
+---
 
 The **Product Backlog** is an emergent, ordered list of what is needed to improve the product.
 **Sprint Planning** initiates the Sprint. 8h or shorter.
-The **Sprint Backlog** includes The Sprint Goal, the Product Backlog items selected for the Sprint, plus the plan for delivering them.
+
+The **Sprint Backlog** includes The Sprint Goal, the _Product Backlog_ items selected for the Sprint, plus the plan for delivering them.
 It is [flexible](https://www.scrum.org/resources/blog/myth-2-sprint-backlog-cant-change-during-sprint), as long as changes do not distract from the focus on the *Sprint Goal*. Could be done during the Daily Scrum.
-The **Sprint Review** inspect the outcome of the Sprint and determine future adaptations. The Product Backlog may also be adjusted to meet new opportunities. It's a _working session_, not a _presentation_ ! 4h or shorter.
+
+Sprint Review and Sprint Retrospective
+---
+
+The **Sprint Review** inspect the outcome of the Sprint and determine future adaptations. The _Product Backlog_ may also be adjusted to meet new opportunities. It's a _working session_, not a _presentation_ ! 4h or shorter.
 They are an opportunitie to collect user and stakeholder feedbacks.
-The **Sprint Retrospective** plan ways to increase quality and effectiveness, identifies what went well during the Sprint and what problems it encountered. You can add things to next Sprint Backlog. 3h or shorter.
+
+
+The **Sprint Retrospective** plan ways to increase quality and effectiveness, identifies what went well during the _Sprint_ and what problems it encountered. You can add things to next _Sprint Backlog_. 3h or shorter.
 
 Work cannot be considered part of an **Increment** unless it meets the **Definition of Done**.
 
 The Scrum Team
 ---
-The Scrum Team consists of **one Scrum Master, one Product Owner, and Developers**. They are cross-functional and self-managing.
+The **Scrum Team** consists of **one Scrum Master, one Product Owner, and Developers**. They are cross-functional and self-managing.
 It's small enough to remain nimble and large enough to complete significant work within a Sprint, typically 10 or fewer people.
-If Scrum Teams become too large, they should consider reorganizing into multiple cohesive Scrum Teams, each focused on the same product. Therefore, they should share the same Product Goal, Product Backlog, and Product Owner.
+If Scrum Teams become too large, they should consider reorganizing into multiple cohesive _Scrum Teams_, each focused on the same product. Therefore, they should share the same _Product Goal_, _Product Backlog_, and _Product Owner_.
 
 Daily Scrum
 ---

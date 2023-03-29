@@ -24,7 +24,7 @@ Transparency > Inspection > Adaptation
 
 [Five Values](https://www.scrum.org/resources/blog/5-scrum-values-take-center-stage)
 ---
-Courage, Focus, Commitment, Respect, Openness
+**F.O.R.C.C** : Focus, Openness, Respect, Courage, Commitment.
 
 Successful use of Scrum depends on people becoming more proficient in living these five values. People personally commit to achieving the goals of the Scrum Team. The Scrum Team members have courage to do the right thing and work on tough problems. Everyone focuses on the work of the Sprint and the goals of the Scrum Team. The Scrum Team and its stakeholders agree to be open about all the work and the challenges with performing the work. Scrum Team members respect each other to be capable, independent people.
 
