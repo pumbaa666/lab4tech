@@ -1,0 +1,32 @@
+{
+	"Name": "Estimate for private server",
+	"Total Cost": {
+		"monthly": "0.09",
+		"upfront": "48.18",
+		"12 months": "49.26"
+	},
+	"Metadata": {
+		"Currency": "USD",
+		"Locale": "en_US",
+		"Created On": "3/30/2023",
+		"Legal Disclaimer": "AWS Pricing Calculator provides only an estimate of your AWS fees and doesn't include any taxes that might apply. Your actual fees depend on a variety of factors, including your actual usage of AWS services.",
+		"Share Url": "https://calculator.aws/#/estimate?id=aaf135b1f1b53f3b5f9bd897163f78dbb49946e6"
+	},
+	"Groups": {
+		"Services": [
+			{
+				"Service Name": "Amazon EC2 ",
+				"Description": "mon serveur perso",
+				"Region": "Europe (Paris)",
+				"Service Cost": {
+					"monthly": "0.09",
+					"upfront": "48.18",
+					"12 months": "49.26"
+				},
+				"Properties": {
+					"Tenancy": "Shared Instances"
+				}
+			}
+		]
+	}
+}
