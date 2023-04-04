@@ -32,3 +32,6 @@ Integration with others was normally a nightmare fraught with blame, fingers bei
 But there was a flaw – We delivered our code, even tested it, but then moving into production was a nightmare and there was a cost. 
 Continuous Delivery was the response to this. It basically applied the ideas of CI on a much grander scale.
 This whole CI/CD/DCA would be documented in a simple artifact, the Definition of Done (DoD). The DoD guides the team as they plan, do and deliver work. 
+
+This is where we can put the non-fonctional development, like optimisation or refactoring. The infamous _nice-to-have_.
+The developpers are accounted to express their concerns about potential futur problems and the necessity to correct them soon enough.

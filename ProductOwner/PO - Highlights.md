@@ -56,7 +56,7 @@ Product Backlog and Sprint Backlog
 ---
 
 The **Product Backlog** is an emergent, ordered list of what is needed to improve the product.
-**Sprint Planning** initiates the Sprint. 8h or shorter.
+**[Sprint Planning](https://www.visual-paradigm.com/scrum/what-is-sprint-planning/)** initiates the Sprint. 8h or shorter.
 
 The **Sprint Backlog** includes The Sprint Goal, the _Product Backlog_ items selected for the Sprint, plus the plan for delivering them.
 It is [flexible](https://www.scrum.org/resources/blog/myth-2-sprint-backlog-cant-change-during-sprint), as long as changes do not distract from the focus on the *Sprint Goal*. Could be done during the Daily Scrum.
@@ -64,13 +64,18 @@ It is [flexible](https://www.scrum.org/resources/blog/myth-2-sprint-backlog-cant
 Sprint Review and Sprint Retrospective
 ---
 
-The **Sprint Review** inspect the outcome of the Sprint and determine future adaptations. The _Product Backlog_ may also be adjusted to meet new opportunities. It's a _working session_, not a _presentation_ ! 4h or shorter.
+The **[Sprint Review](https://www.visual-paradigm.com/scrum/what-is-sprint-review/)** inspect the outcome of the Sprint and determine future adaptations. The _Product Backlog_ may also be adjusted to meet new opportunities. It's a _working session_, not a _presentation_ ! 4h or shorter.
 They are an opportunitie to collect user and stakeholder feedbacks.
 
 
-The **Sprint Retrospective** plan ways to increase quality and effectiveness, identifies what went well during the _Sprint_ and what problems it encountered. You can add things to next _Sprint Backlog_. 3h or shorter.
+The **[Sprint Retrospective](https://www.visual-paradigm.com/scrum/what-is-sprint-retrospective-meeting/)** plan ways to increase quality and effectiveness, identifies what went well during the _Sprint_ and what problems it encountered. You can add things to next _Sprint Backlog_. 3h or shorter.
+
+Si on identifie des points d'améliorations, les noter dans le Sprint Backlog, car de toute façon le prochain event est le Sprint Planning.
 
 Work cannot be considered part of an **Increment** unless it meets the **Definition of Done**.
+
+**Sprint Review vs Sprint Retrospective**
+The Sprint Review focuses on the "inspect" and "adapt" of the increment (Potentially shippable), while the Sprint Retrospective give more focus on the "inspect" and "adapt" of the process of the sprint.
 
 The Scrum Team
 ---
