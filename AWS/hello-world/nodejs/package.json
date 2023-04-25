@@ -1,0 +1,11 @@
+{
+    "name": "aws-hello-world",
+    "version": "1.0.0",
+    "main": "src/app.js",
+    "scripts": {
+      "start": "node src/app.js"
+    },
+    "dependencies": {
+      "http": "^0.0.1-security"
+    }
+}
