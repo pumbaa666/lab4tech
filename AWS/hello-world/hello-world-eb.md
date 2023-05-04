@@ -258,16 +258,19 @@ aws elasticbeanstalk delete-application --application-name helloworld-node-app
 # https://stackoverflow.com/questions/11211007/how-do-you-pass-custom-environment-variable-on-amazon-elastic-beanstalk-aws-ebs
 
 ```
-eb create dev-env --branch_default
-    --single \
+eb create dev-env --branch_default \
     --instance_type t3.micro --platform node.js-18 \
-    --min-instances 1 --max-instances 2 --scale 1 \
+    --min-instances 1 --max-instances 2 \
     --region eu-west-1 \
-    --elb-type network --shared-lb-port 1337 \
-    --instance_profile pumbaa-admin \
+    --elb-type network \
     --cname hello-world \
     --keyname aws-eb-re \
-    --tags environment=test \
+    --tags environment=test
+    
+    --instance_profile pumbaa-admin \
     --version test-0.0.1 \
-    --envvars
+    --envvars .ebextensions/environment.config
+    --min-instances 1 --max-instances 2 \
+    --single \
+    --shared-lb-port 1337 \
 ```
