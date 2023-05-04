@@ -1,10 +1,20 @@
 Deploy an *EC2 instance* running a NodeJS Hello-World with *Elasticbeanstalk* and *S3 Bucket*
 ===
 
+Summary (TODO)
+---
+Create a Root account, enable Organisation, enable SSO.
+Create an Administrator account on IAM Identity Center.
+Install aws and eb CLI.
+aws configure and aws configure sso.
+Configure aws sso in gitconfig, git init
+eb init and eb create.
+
 Creating Accounts
 ---
 
 **Create an *AWS Root Account*** in the desired Region.
+[Doc](https://docs.aws.amazon.com/singlesignon/latest/userguide/get-started-assign-account-access-admin-user.html)
 Ireland (*eu-west-1*) is better because it has the most services enabled.
 
 **Create an *Organisation*** ([Doc 1](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html?org_product_rc_usergude=), [Doc 2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html))
@@ -14,7 +24,7 @@ From [the CLI](https://docs.aws.amazon.com/cli/latest/reference/organizations/cr
 
 **Create an *Administrator User Account***
 
-Login to the [IAM Identity Center](https://eu-west-1.console.aws.amazon.com/singlesignon/identity/home?region=eu-west-1#) (and **not** just *IAM* )
+Login to the [IAM Identity Center](https://eu-west-1.console.aws.amazon.com/singlesignon/identity/home?region=eu-west-1#) (and **not** just [IAM](https://eu-west-1.console.aws.amazon.com/iam/home?region=eu-west-1), [learn the difference](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html) )
 
 Create an *Admin Group*.
 ![Create an Admin Group 1](screenshots/02-group-1.png)
@@ -60,6 +70,12 @@ Login to the [IAM Identity Center](https://eu-west-1.console.aws.amazon.com/sing
 Logout from this account.
 
 ```
+aws configure # Only set Region name. Key ID and Access Key are deprecated and will be managed by `aws configure sso`
+    AWS Access Key ID [None]: 
+    AWS Secret Access Key [None]: 
+    Default region name [None]: eu-west-1
+    Default output format [None]:
+
 aws configure sso
     # Chose whatever you want
     SSO session name : admin-session
@@ -109,14 +125,19 @@ aws s3 rm s3://elasticbeanstalk-eu-west-1-385324514552/ --profile user-account
 ```
 
 Alternatively you can set some **environment variables** (env. var.) to get rid of the *--profile* parameter.
+Run at least one CLI command with the *--profile* parameter, it will generate the credentials in ~/.aws/cli/cache/FILE.json
+and then run the following commands :
 
 ```
 cliCacheFolder=~/.aws/cli/cache/ # aws default cache folder
 cliCacheFile=$(ls -rt $cliCacheFolder | head -n 1) # CLI config file name
 cliCacheFile=$cliCacheFolder$cliCacheFile # absolute file path
+echo -e "\nPast the following lines into the terminal where you want to execute aws commands"
+echo "################################################################"
 echo "export AWS_ACCESS_KEY_ID=$(jq ".Credentials.AccessKeyId" $cliCacheFile)"
 echo "export AWS_SECRET_ACCESS_KEY=$(jq ".Credentials.SecretAccessKey" $cliCacheFile)"
 echo "export AWS_SESSION_TOKEN=$(jq ".Credentials.SessionToken" $cliCacheFile)"
+echo "################################################################"
 ```
 run this code and copy/past the result in the terminal you want to use the CLI commands from.
 
@@ -154,17 +175,59 @@ Deploying the app
 Create new env from local src code
 ```
 cd aws-hello-world-node
+git init --initial-branch=main
 
 eb init
-    # 4 (Region Ireland)
+    Region : 4 (Ireland)
+    Application to use : 2 (create new app)
+    Application name : hello-world-app
+    Is this node ? : Y
+    Plateform : 1 (Node.js 18)
+    CodeCommit : Y
+    Repository name : helloworld-node
+    Branche Name : main
+    Set up SSH : Y
+    Select a keypair : 1 (aws-eb) (TODO tuto pour la créer)
+# Please note the SSH passphrase, you'll need it later
 
 # https://stackoverflow.com/questions/64363112/codecommit-fails-when-after-commit-rewrite-with-amend
+# https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-codesource.html
 eb codesource local
 
-eb create # If it fails due to ACL restriction, enable ACL (see next section)
-    TODO
+# CREATE
+# https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-create.html
+# If it fails due to ACL restriction, enable ACL (see next section)
+eb create
+    
+# TODO Ajouter une Inbound Rule "Custom TCP, port 1337, 0.0.0.0/0" au Security Group dont la description est "Elastic Beanstalk created security group used when no ELB security groups are specified during ELB creation"
+# https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https-elb.html
 
-eb ssh
+vi ~/.gitconfig
+    [user]
+        name = Loic Correvon
+        email = pumbaa666+aws.com@gmail.com
+    [credential]
+        helper = !aws codecommit credential-helper $@
+        UseHttpPath = true
+git add -A
+git commit -m "First commit after eb create (CLI)"
+git push
+    
+    Environment Name : Default (hello-world-app-dev)
+    DNS CNAME prefix : Default (hello-world-app-dev)
+    Loadbalancer : 1 (classic)
+    Enable Spot Fleet : N
+
+eb ssh # Enter the passphrase you created at "eb init"
+
+# TODO Setter le port à l'ignite
+# TODO same with HTTPS
+sudo vi /etc/nginx/conf.d/elasticbeanstalk/00_application.conf
+    proxy_pass          http://127.0.0.1:1337;
+sudo systemctl restart nginx
+
+# To terminate the environment :
+eb terminate
 ```
 
 **Enable *ACL*** ([stackoverflow](https://stackoverflow.com/questions/70333681/for-an-amazon-s3-bucket-deployment-from-github-how-do-i-fix-the-error-accesscont))
@@ -182,3 +245,29 @@ aws elasticbeanstalk terminate-environment --environment-name helloworld-node-ap
 aws elasticbeanstalk delete-application --application-name helloworld-node-app
 ```
 
+
+
+
+
+
+
+# TODO intégrer au tuto
+# Refaire le tuto en 2 partie : Via le browser vs Full CLI/config files
+
+# Config env var
+# https://stackoverflow.com/questions/11211007/how-do-you-pass-custom-environment-variable-on-amazon-elastic-beanstalk-aws-ebs
+
+```
+eb create dev-env --branch_default
+    --single \
+    --instance_type t3.micro --platform node.js-18 \
+    --min-instances 1 --max-instances 2 --scale 1 \
+    --region eu-west-1 \
+    --elb-type network --shared-lb-port 1337 \
+    --instance_profile pumbaa-admin \
+    --cname hello-world \
+    --keyname aws-eb-re \
+    --tags environment=test \
+    --version test-0.0.1 \
+    --envvars
+```
