@@ -282,15 +282,12 @@ ssh -i .ssh/aws-eb-re.pub ec2-user@34.252.159.221
 **Show, stop and restart the webapp**
 The node webapp is automatically started as a daemon with user `webapp`.
 
-It also starts a nginx service listening on port 80.
-TODO redirect it to port 1337.
+It also starts a nginx service listening on port 80 and redirect trafic to port 1337.
 
 ```
 sudo su -i # Log to root
 
 systemctl list-unit-files
-<!-- systemctl stop nginx
-systemctl stop https -->
 cat /etc/systemd/system/web.service
 systemctl status web.service
     # ● web.service - This is web daemon
@@ -302,14 +299,8 @@ systemctl status web.service
     #      └─31234 node src/app.js
 #systemctl stop web
 
-wget -nv -q -O - http://ec2-34-252-159-221.eu-west-1.compute.amazonaws.com:1337
+wget -nv -q -O - http://<YOUR_PUBLIC_IPV4_DNS>:1337 # i.e. http://ec2-34-252-159-221.eu-west-1.compute.amazonaws.com:1337
 ```
-
-
-<!-- # redirect 80 to 1337
-sudo vi /etc/nginx/conf.d/elasticbeanstalk/00_application.conf
-    proxy_pass          http://127.0.0.1:1337;
-sudo systemctl restart nginx -->
 
 **To terminate the environment**
 `eb terminate`
@@ -319,7 +310,7 @@ sudo systemctl restart nginx -->
 
 
 
-
+<!-- TODO clean -->
 
 # Config env var
 # https://stackoverflow.com/questions/11211007/how-do-you-pass-custom-environment-variable-on-amazon-elastic-beanstalk-aws-ebs
