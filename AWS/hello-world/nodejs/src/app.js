@@ -4,6 +4,11 @@ const PORT = 1337;
 
 console.log("Starting webserver");
 
+// https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environments-cfg-softwaresettings.html#environments-cfg-softwaresettings-accessing
+const PORT_FROM_CONFIG = process.env.NODEJS_PORT;
+console.log("process.env : "+process.env)
+console.log("PORT_FROM_CONFIG : "+PORT_FROM_CONFIG)
+
 // Start a webserver on port 1337
 http.createServer((request, response) => {
     

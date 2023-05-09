@@ -1,1 +1,5 @@
-A Simple ReadMe for a Simple Application
+A basic Hello World in NodeJS.
+Run `npm start` to deploy a webserver replying "It works!" on GET requests on port 1337.
+Runs with Node 18.
+
+Serves to demonstrate how to deploy a full environment with AWS CLI (See the README.md in the Parent directory).
