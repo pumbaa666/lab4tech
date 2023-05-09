@@ -1,6 +1,0 @@
-[user]
-    name = Loic Correvon
-	email = pumbaa666+aws.com@gmail.com 
-[credential]
-    helper = !aws codecommit credential-helper $@
-    UseHttpPath = true
