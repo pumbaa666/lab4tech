@@ -1,6 +1,9 @@
 [submodule "AWS/elastic-beanstalk-samples"]
 	path = AWS/elastic-beanstalk-samples
 	url = https://github.com/awsdocs/elastic-beanstalk-samples.git
-[submodule "AWS/aws-hello-world-infra"]
-	path = AWS/aws-hello-world-infra
-	url = https://github.com/pumbaa666/aws-hello-world-infra.git
+[submodule "AWS/aws-elastic-beanstalk-cli-setup"]
+	path = AWS/aws-elastic-beanstalk-cli-setup
+	url = https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
+[submodule "AWS/hello-world/aws-elastic-beanstalk-cli-setup"]
+	path = AWS/hello-world/aws-elastic-beanstalk-cli-setup
+	url = https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
