@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script creates an Elastic Beanstalk environment with the following parameters:
-KEYNAME=aws-eb-re # Set the keyname created with `eb init`. They are usually stored in ~/.ssh/
+KEYNAME=aws-eb # Set the keyname created with `eb init`. They are usually stored in ~/.ssh/
 REGION=eu-west-1 # Ireland
 
 INSTANCE_TYPE=t3.micro # Free tiers instance

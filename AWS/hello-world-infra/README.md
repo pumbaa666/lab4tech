@@ -216,7 +216,7 @@ eb init hello-world-app --platform node.js-18
     Select a keypair : 1 (aws-eb) (TODO tuto pour la créer)
     
 # Please note the SSH passphrase, you'll need it later
-# If you already have a SSH key-pair, add the following parameter to the command : --keyname aws-eb-re
+# If you already have a SSH key-pair, add the following parameter to the command : --keyname aws-eb
 # If you already have a CodeCommit repository, add the following parameter to the command : --source codecommit/repository-name/branch-name
 ```
 
@@ -245,7 +245,7 @@ eb create dev-env --branch_default \
     --region eu-west-1 \
     --elb-type network \
     --cname hello-world \
-    --keyname aws-eb-re \
+    --keyname aws-eb \
     --tags environment=test
 ```
 
@@ -277,7 +277,7 @@ The content of `eb-engine.log` shows all the initialisation operations :
 **SSH log in to your new env**
 ```
 eb ssh # Enter the passphrase of the SSH Key you created at "eb init"
-ssh -i .ssh/aws-eb-re.pub ec2-user@34.252.159.221
+ssh -i .ssh/aws-eb.pub ec2-user@34.252.159.221
 ```
 
 

@@ -6,11 +6,11 @@ branch-defaults:
 environment-defaults:
   dev-env:
     branch: main
-    repository: re-hello-world-repo
+    repository: hello-world-infra
 global:
   application_name: hello-world-app
   branch: main
-  default_ec2_keyname: aws-eb-re
+  default_ec2_keyname: aws-eb
   default_platform: Node.js 18
   default_region: eu-west-1
   include_git_submodules: true
@@ -18,6 +18,6 @@ global:
   platform_name: null
   platform_version: null
   profile: null
-  repository: re-hello-world-repo
+  repository: hello-world-infra
   sc: git
   workspace_type: Application

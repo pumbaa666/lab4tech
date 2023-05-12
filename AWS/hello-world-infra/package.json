@@ -8,7 +8,7 @@
       "create": "./scripts-infra/create-eb.sh",
       "prod": "eb deploy",
       "staging": "eb deploy --stage",
-      "kill": "eb terminate dev-env",
+      "kill": "eb terminate",
       "sso": "./scripts-infra/refresh-sso-token.sh --profile pumbaa-admin",
       "eb-path": "./scripts-infra/refresh-sso-token.sh --profile pumbaa-admin --skip-login"
     },
