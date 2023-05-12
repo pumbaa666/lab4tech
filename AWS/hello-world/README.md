@@ -46,7 +46,9 @@ Set the *Permission set* to the *Admin Group*.
 
 Install AWS CLI v2 and EB commands
 ---
-[Doc](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+[Documentation Amazon](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+The official repositories (amongst other things) are included as submodule in the [parent directory](https://github.com/pumbaa666/lab4tech/AWS/)
+
 ```
 sudo apt install unzip
 pushd /tmp
@@ -318,3 +320,17 @@ wget -nv -q -O - http://<YOUR_PUBLIC_IPV4_DNS>:1337 # i.e. http://ec2-34-252-159
 
 
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https-elb.html
+
+
+
+
+Examples why IaC is usefull
+---
+**Duplicate an environnement in another region**
+```
+# change eu-west-1 into us-east-2 in .elasticbeanstalk/config.yml
+# eb create ??
+eb deploy --stage
+eb health
+```
+TODO reste

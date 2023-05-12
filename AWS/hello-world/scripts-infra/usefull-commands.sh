@@ -7,6 +7,8 @@
 # EB
 eb init
 eb create
+eb deploy
+eb deploy --stage # Deploy without having to commit. Useful for testing and developing purposes.
 eb health
 eb ssh
 eb terminate
