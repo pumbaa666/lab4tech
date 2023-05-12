@@ -4,3 +4,6 @@
 [submodule "AWS/aws-elastic-beanstalk-cli-setup"]
 	path = AWS/aws-elastic-beanstalk-cli-setup
 	url = https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
+[submodule "AWS/hello-world-infra"]
+	path = AWS/hello-world-infra
+	url = https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/hello-world-infra
