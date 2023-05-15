@@ -13,6 +13,11 @@ eb health
 eb ssh
 eb terminate
 
+eb printenv
+#  Environment Variables:
+#      NODEJS_PORT = 1337
+eb status -v
+
 # SSO Admin
 # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sso-admin/index.html#available-commands
 aws sso-admin list-instances
