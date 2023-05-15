@@ -59,12 +59,17 @@ To be able to configure and run an environment with CLI you'll have to :
 ---
 
 **Create an *AWS Root Account*** in the desired Region.
+
 [Doc](https://docs.aws.amazon.com/singlesignon/latest/userguide/get-started-assign-account-access-admin-user.html)
+
 Ireland (*eu-west-1*) is better because it has the most services enabled.
 
-**Create an *Organisation*** ([Doc 1](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html?org_product_rc_usergude=), [Doc 2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html))
+**Create an *Organisation***
+[Doc 1](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html?org_product_rc_usergude=), [Doc 2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html)
+
 Login as Root User and go to the [AWS Administration Console](https://us-east-1.console.aws.amazon.com/organizations/v2/home/accounts)
 Create the organisation (TODO check / screenshot)
+
 From [the CLI](https://docs.aws.amazon.com/cli/latest/reference/organizations/create-organization.html?orgs_product_rc_CLI) (TODO)
 
 
@@ -94,6 +99,7 @@ Set the *Permission set* to the *Admin Group*.
 <a name="install-cli">Install AWS CLI v2 and EB commands</a>
 ---
 [Documentation Amazon](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
 The official repositories (amongst other things) are included as submodule in the [parent directory](https://github.com/pumbaa666/lab4tech/tree/main/AWS)
 
 ```
@@ -179,7 +185,9 @@ aws s3 rm s3://elasticbeanstalk-eu-west-1-385324514552/ --profile user-account
 <a name="configure-sso-terminal">Set up SSO in terminal (CLI)</a>
 ---
 Alternatively you can set some **environment variables** (env. var.) to get rid of the `--profile` parameter.
+
 Run at least one CLI command with the `--profile` parameter, it will generate the credentials in `~/.aws/cli/cache/FILE.json`
+
 and then run the following commands :
 
 ```
@@ -200,8 +208,8 @@ echo -e "################################################################\n"
 Copy/past the result in the terminal you want to use the CLI commands from.
 
 You can invoke this script by running `./scripts-infra/refresh-sso-token.sh --profile user-account --skip-login`.
-Omit the `--skip-login` parameter if you have to relog to the SSO (once every 24 hours).
 
+Omit the `--skip-login` parameter if you have to relog to the SSO (once every 24 hours).
 
 
 <a name="git-init">**Configure git to use AWS credentials**</a>
@@ -231,7 +239,9 @@ git push
 [It seems](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-init.html) we can't do it without being prompted : _The init command prompts you to provide values for eb init command options that do not have a (default) value..._
 
 When creating a SSH key pair, note the SSH passphrase, you'll need it later.
+
 If you already have a SSH key-pair, add the following parameter to the command : `--keyname aws-eb`
+
 If you already have a CodeCommit repository, add the following parameter to the command : `--source codecommit/repository-name/branch-name`
 ```
 eb init hello-world-app --platform node.js-18
@@ -297,7 +307,10 @@ It will build the application and upload it as a .zip to your [S3 Bucket](https:
 
 <a name="conf-eb-env">**Configure the environment**</a>
 ---
-Some configuration have to be stored in the `.ebextensions` folder at the root of the webapp directory and some in the `.platform`.
+Some configuration have to be stored in the `.ebextensions` folder at the root of the webapp directory
+
+and some in the `.platform`.
+
 The `.elasticbeanstalk` folder will contain the config of your last terminal session. This is also where the log are retrieved with the `eb logs` command.
 
 [For example](https://aws.amazon.com/blogs/compute/introducing-a-new-generation-of-aws-elastic-beanstalk-platforms/), a NodeJS webserver bundle might look like:
@@ -343,6 +356,7 @@ vi .ebextensions/network-load-balancer.config
 **Nginx**
 
 To configure the nginx reverse proxy create a file named `.platform/nginx/conf.d/elasticbeanstalk/00_application.conf` and set the proxy_pass with the webapp port.
+
 It will redirect incoming traffic from port 80 to the port 1337, maped to the process running the service `web.service`.
 ```
 vi .platform/nginx/conf.d/elasticbeanstalk/00_application.conf
@@ -351,6 +365,7 @@ vi .platform/nginx/conf.d/elasticbeanstalk/00_application.conf
     }
 ```
 That will override the elasticbeanstalk nginx conf on the machine under `/etc/nginx/conf.d/elasticbeanstalk/conf.d/00_application.conf`.
+
 The root config of nginx `/etc/nginx/nginx.conf` is set to enable all conf files under `conf.d/elasticbeanstalk/` subfolder.
 ```
 eb ssh # To SSH on the host machine
@@ -373,6 +388,7 @@ Deploying the app
 **Retrieve the logs**
 
 `eb logs --all`
+
 It will download them locally under `/.elasticbeanstalk/logs/latest/`
 
 The content of `eb-engine.log` shows all the initialisation operations :
@@ -391,6 +407,7 @@ eb ssh # Enter the passphrase of the SSH Key you created at "eb init"
 ```
 
 or with default `ssh` command or any other, like `sshrc`.
+
 Get your aws key-pair from your `~/.ssh/` folder and the Public IPv4 address of the instance [from the dashboard](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#Instances:) or in CLI with `describe-instance`.
 
 ```
@@ -412,6 +429,7 @@ ssh -i $AWS_PUBLIC_KEY $EC2USER@$EC2_IP
 The node webapp is automatically started as a daemon with user `webapp`.
 
 It also starts a nginx service listening on port 80 and all conf files under `conf.d/elasticbeanstalk/` subfolder.
+
 We overrid it in the [configuration section](#conf-eb-env) to redirect traffic from port 80 (internet) to 1337 (NodeJS).
 
 
@@ -437,9 +455,11 @@ wget -nv -q -O - http://<YOUR_PUBLIC_IPV4_DNS>:1337 # i.e. http://ec2-34-252-159
 **Update the configuration**
 
 Deploy your local changes, without having to commit them (for testing, debuging and developing purpose)
+
 `eb deploy --staged`
 
 Deploy to prod.
+
 `eb deploy`
 
 
@@ -468,4 +488,3 @@ Examples why IaC is usefull
 eb deploy --stage
 eb health
 ```
-TODO reste
