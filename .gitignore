@@ -1,1 +1,3 @@
-AWS/hello-world.old/nodejs/.git.codecommit
+
+# Elastic Beanstalk Files
+hello-world-infra/.elasticbeanstalk/logs/
