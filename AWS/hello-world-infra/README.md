@@ -378,9 +378,15 @@ cat /etc/nginx/nginx.conf
 
 If you want to completely override the default nginx conf, rename the file `.platform/nginx/ngnix.conf.default` to `ngnix.conf`.
 
+**Configure some environment variables**
+
+[Doc 1](https://stackoverflow.com/questions/11211007/how-do-you-pass-custom-environment-variable-on-amazon-elastic-beanstalk-aws-ebs), [Doc 2](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https-elb.html)
+
+TODO
+
+
 Deploying the app
 ---
-
 
 <a name="webapp">**Manage the WebApp**</a>
 ---
@@ -467,23 +473,13 @@ Deploy to prod.
 
 `eb terminate`
 
-
-
-
-
-
-<!-- TODO clean -->
-
-**Config env var**
-
-[Doc 1](https://stackoverflow.com/questions/11211007/how-do-you-pass-custom-environment-variable-on-amazon-elastic-beanstalk-aws-ebs), [Doc 2](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https-elb.html)
-
-
 Examples why IaC is usefull
 ---
 **Duplicate an environnement in another region**
 ```
 # change eu-west-1 into us-east-2 in .elasticbeanstalk/config.yml
+vi .elasticbeanstalk/config.yml
+    default_region: us-east-1
 # eb create ??
 eb deploy --stage
 eb health
