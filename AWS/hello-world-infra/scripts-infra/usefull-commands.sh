@@ -47,6 +47,13 @@ aws ec2 stop-instances --instance-ids $MY_INSTANCE_ID --query TerminatingInstanc
 aws ec2 describe-instances --instance-ids $MY_INSTANCE_ID --query Reservations[*].Instances[*].[State.Name,StateTransitionReason,SubnetId,NetworkInterfaces[*].PrivateIpAddress,SecurityGroups[*].GroupId]
 aws ec2 terminate-instances --instance-ids $MY_INSTANCE_ID --query TerminatingInstances[*].CurrentState.Name
 aws ec2 describe-instances --instance-ids $MY_INSTANCE_ID --query Reservations[*].Instances[*].[State.Name,StateTransitionReason,SubnetId,NetworkInterfaces[*].PrivateIpAddress,SecurityGroups[*].GroupId]
+# Open a port
+EB_MAC_ADRESS=$(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/)
+EB_SG_ID=$(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/$EB_MAC_ADRESS/security-group-ids/)
+PROTOCOL="tcp"
+CIDR="0.0.0.0/0"
+aws ec2 authorize-security-group-ingress --group-id $EB_SG_ID --port 8080 --protocol $PROTOCOL --cidr $CIDR
+aws ec2 describe-security-groups --group-ids $EB_SG_ID --output text --filter Name=ip-permission.to-port,Values=8080
 
 # CodeCommit Repository
 # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/codecommit/index.html#cli-aws-codecommit
@@ -69,3 +76,12 @@ aws s3 rm s3://$MY_BUCKET_NAME/$MY_BUCKET_APP/
 # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/elbv2/index.html#available-commands
 MY_LOAD_BALANCER_NAME="awseb-e-r-AWSEBLoa-I80CWFYZWSF2"
 aws elbv2 describe-load-balancers --names $MY_LOAD_BALANCER_NAME
+
+
+https://youtu.be/RrKRN9zRBWs?t=4140
+# On the EB machine
+curl -s http://169.254.169.254/latest/meta-data/
+curl -s http://169.254.169.254/latest/meta-data/mac/
+curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/
+curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/02:56:36:71:c6:17/security-group-ids/
+curl -s http://169.254.169.254/latest/meta-data/public-ipv4

@@ -216,13 +216,12 @@ Omit the `--skip-login` parameter if you have to relog to the SSO (once every 24
 ```
 vi ~/.gitconfig
     [user]
-        name = Loic Correvon
+        name = Your Name
         email = your-email@email.com
     [credential]
         helper = !aws codecommit credential-helper $@
         UseHttpPath = true
 ```
-TODO gérer les multi-comptes github
 
 **Create new env from local src code**
 
@@ -297,6 +296,15 @@ eb create dev-env --branch_default \
     --min-instances 1 --max-instances 2 \
     --region eu-west-1 \
     --elb-type network \
+    --cname hello-world \
+    --keyname aws-eb \
+    --tags environment=test
+    
+TODO single-instance https://youtu.be/RrKRN9zRBWs?t=5637
+eb create dev-env --branch_default \
+    --instance_type t3.micro --platform node.js-18 \
+    --region eu-west-1 \
+    --single \
     --cname hello-world \
     --keyname aws-eb \
     --tags environment=test
@@ -377,6 +385,12 @@ cat /etc/nginx/nginx.conf
 ```
 
 If you want to completely override the default nginx conf, rename the file `.platform/nginx/ngnix.conf.default` to `ngnix.conf`.
+
+<!-- TODO https -->
+<!-- https://gist.github.com/henhan/2943013c9064606425b0ee5bb1ca8c99 -->
+
+<!-- TODO config artifacts and pipeline -->
+<!-- https://docs.aws.amazon.com/codebuild/latest/userguide/sample-elastic-beanstalk.html -->
 
 **Configure some environment variables**
 

@@ -9,6 +9,7 @@ printHelp() {
     echo ""
     echo "Usage: $0 --profile <profile-name> [--skip-login]"
     echo "  -p, --profile: the name of the profile to refresh"
+    echo "  -c, --clear-cache: Delete the files created by the aws sso login command in ~/.aws/sso/cache/"
     echo "  -s, --skip-login: if set, the script will not open your browser to login to SSO. But it will retrieve the credentials from the cache and print them"
     echo "  -h, --help: print this helpfull help"
     exit 0

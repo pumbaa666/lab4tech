@@ -1,5 +1,5 @@
 [user]
-    name = Loic Correvon
+    name = Pumbaa AWS
 	email = pumbaa666+aws.com@gmail.com
 [credential]
     helper = !aws codecommit credential-helper $@
