@@ -85,3 +85,25 @@ curl -s http://169.254.169.254/latest/meta-data/mac/
 curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/
 curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/02:56:36:71:c6:17/security-group-ids/
 curl -s http://169.254.169.254/latest/meta-data/public-ipv4
+
+# Lambda
+# https://www.youtube.com/watch?v=dreJIfZMEUM 
+aws lambda invoke --function-name hello-lambda --payload ewogICJrZXkxIjogInZhbHVlMSIsCiAgImtleTIiOiAidmFsdWUyIiwKICAia2V5MyI6ICJ2YWx1ZTMiCn0= response.json # Response in response.json
+aws lambda invoke --function-name hello-lambda --invocation-type Event --payload ewogICJrZXkxIjogInZhbHVlMSIsCiAgImtleTIiOiAidmFsdWUyIiwKICAia2V5MyI6ICJ2YWx1ZTMiCn0= response.json # Event --> asyncronous. response.json is empty
+
+# SQS
+# https://www.youtube.com/watch?v=ChMjrubsTLY&t=475
+aws sqs list-queues
+    # "QueueUrls": ["https://sqs.eu-west-1.amazonaws.com/385324514552/hello-queue"]
+        
+aws sqs send-message --queue-url https://sqs.eu-west-1.amazonaws.com/385324514552/hello-queue --message-body coucou-2-from-cli --delay-seconds 10
+aws sqs receive-message --queue-url https://sqs.eu-west-1.amazonaws.com/385324514552/hello-queue --wait-time-seconds 0 # 0 sec --> short polling
+# long polling --> wait-time-seconds 20
+aws sqs receive-message --queue-url https://sqs.eu-west-1.amazonaws.com/385324514552/hello-queue --wait-time-seconds 20
+
+# Secrets Manager
+# https://www.youtube.com/watch?v=ChMjrubsTLY&t=475
+aws secretsmanager create-secret --name hello-secret --secret-string "coucou"
+aws secretsmanager get-secret-value --secret-id hello-secret
+aws secretsmanager delete-secret --secret-id hello-secret
+aws secretsmanager list-secrets

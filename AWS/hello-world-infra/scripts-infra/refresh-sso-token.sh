@@ -7,12 +7,12 @@ printHelp() {
     echo "This script will refresh the SSO token for the given profile name."
     echo "It will open your browser to login to SSO and then print some commands for you to execute in the terminal you want to use AWS CLI with."
     echo ""
-    echo "Usage: $0 --profile <profile-name> [--skip-login]"
-    echo "  -p, --profile: the name of the profile to refresh"
+    echo "Usage: $0 --profile <profile-name> [options]"
+    echo "  -p, --profile <profile-name>: the name of the profile to refresh"
+    echo "Optional parameters:"
     echo "  -c, --clear-cache: Delete the files created by the aws sso login command in ~/.aws/sso/cache/"
     echo "  -s, --skip-login: if set, the script will not open your browser to login to SSO. But it will retrieve the credentials from the cache and print them"
     echo "  -h, --help: print this helpfull help"
-    exit 0
 }
 
 exitIfLsError() {
@@ -45,7 +45,7 @@ while [[ "$#" -gt 0 ]]; do case $1 in
     -p|--profile) profile_name="$2"; shift;;
     -s|--skip-login) skipLogin=true;;
     -c|--clear-cache) clearCache=true;;
-    -h|--help) printHelp;;
+    -h|--help) printHelp; exit 0;;
     *) echo "Unknown parameter passed: $1"; printHelp; exit 1;;
 esac; shift; done
 
@@ -85,8 +85,7 @@ if [ "$clearCache" = true ]; then
 fi
 
 echo "Running a first request with --profile to get the SSO login URL from the cache config in ~/.aws/cli/cache/"
-# aws s3 ls --profile $profile_name # Send a first request with --profile to get the SSO login URL from the cache config in ~/.aws/cli/cache/
-lsResult=$(aws s3 ls --profile $profile_name 2>&1) # Test if you can access S3 without profile-name
+lsResult=$(aws s3 ls --profile $profile_name 2>&1)
 exitIfLsError $lsResult
 
 ######################################

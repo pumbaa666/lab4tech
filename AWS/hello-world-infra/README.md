@@ -16,8 +16,7 @@ Deploying a full environment can be a tedious task with lots of screens to param
     
 All this configuration should be treated as code, versionned, checked and deployed like it, as recommanded by Amazon and the Design Pattern [**Infrastructure as Code (IaC)**](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/infrastructure-as-code.html)
 
-TODO anglais et uploader sur https://learn.lab4tech.ch/mod/page/view.php?id=655
-Infrastructure as Code est un Design Pattern, à ne pas confondre avec Infrastructure as a Service (Iaas) qui représente le service offert par Amazon, et pas l'infrastructure du projet lui-même.
+Infrastructure as Code is a Design Pattern, not to be mistaken with Infrastructure as a Service (Iaas) who's the service offered by Amazon, and not the 'infrastructure of the project.
 
 IaaS
 Infrastructure as a service (IaaS) is a form of cloud computing that provides virtualized computing resources over the internet. IaaS is one of the three main categories of cloud computing services, alongside software as a service (SaaS) and platform as a service (PaaS).
@@ -25,22 +24,23 @@ Infrastructure as a service (IaaS) is a form of cloud computing that provides vi
 IaC
 Practicing infrastructure as code means applying the same rigor of application code development to infrastructure provisioning. All configurations should be defined in a declarative way and stored in a source control system such as AWS CodeCommit or Git, the same as application code. Infrastructure provisioning, orchestration, and deployment should also support the use of the infrastructure as code.
 
-Inconvénients
-Tout en ligne de commandes et fichiers de config --> Peut faire peur si on n'a pas l'habitude
-Les outils sont mieux implémentés sur Linux (aws, eb, git, ssh, python, ...).
-Avantages
-Une fois la phase d'initialisation correctement passée...
+Cons
+- Everything is CLI. Can be scary.
+- Best tools are on Linux (aws, eb, git, ssh, python, ...).
 
-Plus rapide et facile à
-déployer
-modifier
-détruire
-Persister (Git ou AWS CodeCommit)
-le code applicatif (webserver)
-l'infrastructure elle-même (config, scripts, ...)
-Cohérent
-On peut répliquer ou adapter un environnement complet
-Scaler / Auto-scaler (plus besoin d'upgrader)
+Pros
+Once the setup is correctly done
+
+- It's faster and easier to :
+- - deploy
+- - modify
+- - destroy
+- Persiste (Git or AWS CodeCommit)
+- - The application code (webserver)
+- - The infrastructure itself (config, scripts, ...)
+- Consistent
+- - We can replicate or modify a full environment
+- - Scale / Auto-scale (no more upgrades)
 
 Summary
 ---
@@ -391,6 +391,9 @@ If you want to completely override the default nginx conf, rename the file `.pla
 
 <!-- TODO config artifacts and pipeline -->
 <!-- https://docs.aws.amazon.com/codebuild/latest/userguide/sample-elastic-beanstalk.html -->
+
+<!-- TODO Dockerizer node + webapp ? -->
+<!-- https://youtu.be/RrKRN9zRBWs?t=7170 -->
 
 **Configure some environment variables**
 
