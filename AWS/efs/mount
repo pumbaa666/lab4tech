@@ -1,0 +1,7 @@
+# https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html
+# With Amazon EFS, you can create a file system, mount the file system on an Amazon EC2 instance, and then read and write data to and from your file system
+
+sudo -i
+yum install -y amazon-efs-utils
+mkdir data
+mount -t efs -o tls fs-0ce8d2df2fd83ee44:/ data
