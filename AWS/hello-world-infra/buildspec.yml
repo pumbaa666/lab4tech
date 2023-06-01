@@ -1,9 +1,6 @@
 version: 0.2
 
 phases:
-  # install:
-  #   runtime-versions:
-  #     java: corretto11
   post_build:
     commands:
       # - unzip hello-world-app/app-*.zip 2>&1 > /var/log/hello-world_last_deploy.log
@@ -17,5 +14,3 @@ artifacts:
   files:
     - .ebextensions/**/*
     - .platform/**/*
-#     - src/**/*
-#     - package.json

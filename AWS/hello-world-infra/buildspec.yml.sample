@@ -1,0 +1,98 @@
+version: 0.2
+
+# https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-syntax
+
+run-as: ec2-user
+
+env:
+  shell: bash
+  variables:
+    VAR_ENV_TEST: "a-good-value"
+  parameter-store:
+    A_PARAMETER_TEST: "store"
+  exported-variables:
+    EXPORTED_VAR_ENV_TEST: "a-not-bad-value"
+  # secrets-manager:
+  #   key: secret-id:json-key:version-stage:version-id
+  git-credential-helper: yes
+
+# proxy:
+#   upload-artifacts: no | yes
+#   logs: no | yes
+
+# batch:
+#   fast-fail: false | true
+  # build-list:
+  # build-matrix:
+  # build-graph:
+
+phases:
+  install:
+    run-as: ec2-user
+    on-failure: ABORT
+    # runtime-versions:
+    #   java: corretto11 # 
+    commands:
+      - ls -alh
+    finally:
+      - echo ">> Installation done !"
+  pre_build:
+    run-as: ec2-user
+    on-failure: ABORT
+    commands:
+      - ls -alh
+    finally:
+      - echo " >> Pre-build done !!"
+  build:
+    run-as: ec2-user
+    on-failure: ABORT
+    commands:
+      - ls -alh
+    finally:
+      - echo ">> Build done !!!"
+  post_build:
+    run-as: ec2-user
+    on-failure: ABORT
+    commands:
+      - ls -alh
+    finally:
+      - echo ">> Post-build done !!!!"
+
+# reports:
+#   report-group-name-or-arn:
+#     files:
+#       - location
+#       - location
+#     base-directory: location
+#     discard-paths: no | yes
+#     file-format: report-format
+
+# artifacts:
+#   files:
+#     - location
+#     - location
+#   name: artifact-name
+#   discard-paths: no | yes
+#   base-directory: location
+#   exclude-paths: excluded paths
+#   enable-symlinks: no | yes
+#   s3-prefix: prefix
+#   secondary-artifacts:
+#     artifactIdentifier:
+#       files:
+#         - location
+#         - location
+#       name: secondary-artifact-name
+#       discard-paths: no | yes
+#       base-directory: location
+#     artifactIdentifier:
+#       files:
+#         - location
+#         - location
+#       discard-paths: no | yes
+#       base-directory: location
+
+# cache:
+#   paths:
+#     - path
+#     - path
