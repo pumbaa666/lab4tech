@@ -107,3 +107,9 @@ aws secretsmanager create-secret --name hello-secret --secret-string "coucou"
 aws secretsmanager get-secret-value --secret-id hello-secret
 aws secretsmanager delete-secret --secret-id hello-secret
 aws secretsmanager list-secrets
+
+# SNS
+TOPIC_ARN=$(aws sns create-topic --name MySuperTopic --query TopicArn | tr -d '"') && echo $TOPIC_ARN
+# "TopicArn": "arn:aws:sns:eu-west-1:385324514552:MySuperTopic"
+aws sns publish --topic-arn $TOPIC_ARN --message "Hello World"
+aws sns subscribe --topic-arn $TOPIC_ARN --protocol http

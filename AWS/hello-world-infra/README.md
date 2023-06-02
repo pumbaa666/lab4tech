@@ -50,7 +50,7 @@ To be able to configure and run an environment with CLI you'll have to :
 - [Create an Administrator account](#admin-account) on IAM Identity Center
 - [Install aws and eb CLI](#install-cli)
 - [Configure AWS CLI and SSO](#configure-sso)
-- [Initialise GIT](#git-init) (Configure AWS SSO in gitconfig, git init)
+- [Initialize GIT](#git-init) (Configure AWS SSO in gitconfig, git init)
 - [Create the environment](#create-eb-env) (eb init/create, config files, ssh keys)
 - [Configure the environment](#conf-eb-env)
 - [Manage the Webapp](#webapp)
@@ -68,9 +68,7 @@ Ireland (*eu-west-1*) is better because it has the most services enabled.
 [Doc 1](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html?org_product_rc_usergude=), [Doc 2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html)
 
 Login as Root User and go to the [AWS Administration Console](https://us-east-1.console.aws.amazon.com/organizations/v2/home/accounts)
-Create the organisation (TODO check / screenshot)
-
-From [the CLI](https://docs.aws.amazon.com/cli/latest/reference/organizations/create-organization.html?orgs_product_rc_CLI) (TODO)
+Create the organisation on the browser or from [the CLI](https://docs.aws.amazon.com/cli/latest/reference/organizations/create-organization.html?orgs_product_rc_CLI)
 
 
 <a name="admin-account">**Create an *Administrator User Account***</a>
@@ -235,7 +233,7 @@ git push
 
 **Initialize the Elasticbeanstalk environment with prompt**
 
-[It seems](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-init.html) we can't do it without being prompted : _The init command prompts you to provide values for eb init command options that do not have a (default) value..._
+Run the following command to initialize your environment interactively : `eb init hello-world-app --platform node.js-18`, it will create a `.elasticbeanstalk` hidden folder with some config files.
 
 When creating a SSH key pair, note the SSH passphrase, you'll need it later.
 
@@ -243,7 +241,7 @@ If you already have a SSH key-pair, add the following parameter to the command :
 
 If you already have a CodeCommit repository, add the following parameter to the command : `--source codecommit/repository-name/branch-name`
 ```
-eb init hello-world-app --platform node.js-18
+Here is the parameters I used :
     Region : 4 (Ireland)
     Application to use : 2 (create new app)
     Application name : hello-world-app
@@ -256,10 +254,7 @@ eb init hello-world-app --platform node.js-18
     Select a keypair : 1 (create a new key pair)
 ```
 
-TODO tester. Si ça marche, retirer le "It seems" ci-dessus.
-```
-eb init hello-world-app --platform node.js-18 --keyname aws-eb --source codecommit/repository-name/branch-name
-```
+You can do the same with a one-liner : `eb init hello-world-app --platform node.js-18 --keyname aws-eb --source codecommit/hello-world-infra/main`
 
 **Use local files as source code**
 
@@ -291,23 +286,22 @@ eb create
 **... or without prompt**
 
 ```
+# Multiple instances with load balancer
+# eb create dev-env --branch_default \
+#     --instance_type t3.micro --platform node.js-18 \
+#     --min-instances 1 --max-instances 1 \
+#     --region eu-west-1 \
+#     --elb-type network \
+#     --cname hello-world-multi \
+#     --keyname aws-eb
+
+# Single instance
 eb create dev-env --branch_default \
     --instance_type t3.micro --platform node.js-18 \
-    --min-instances 1 --max-instances 2 \
-    --region eu-west-1 \
-    --elb-type network \
-    --cname hello-world \
-    --keyname aws-eb \
-    --tags environment=test
-    
-TODO single-instance https://youtu.be/RrKRN9zRBWs?t=5637
-eb create dev-env --branch_default \
-    --instance_type t3.micro --platform node.js-18 \
-    --region eu-west-1 \
     --single \
-    --cname hello-world \
-    --keyname aws-eb \
-    --tags environment=test
+    --region eu-west-1 \
+    --cname hello-world-single \
+    --keyname aws-eb
 ```
 or run the `./scripts-infra/create-eb.sh` with your custom values.
 
@@ -399,8 +393,12 @@ If you want to completely override the default nginx conf, rename the file `.pla
 
 [Doc 1](https://stackoverflow.com/questions/11211007/how-do-you-pass-custom-environment-variable-on-amazon-elastic-beanstalk-aws-ebs), [Doc 2](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https-elb.html)
 
-TODO
-
+Put the variables in any file with .config extension in the `.ebextensions` folder respecting this convention :
+```
+option_settings:
+  aws:elasticbeanstalk:application:environment:
+    NODEJS_PORT: 1337
+```
 
 Deploying the app
 ---
@@ -497,7 +495,6 @@ Examples why IaC is usefull
 # change eu-west-1 into us-east-2 in .elasticbeanstalk/config.yml
 vi .elasticbeanstalk/config.yml
     default_region: us-east-1
-# eb create ??
 eb deploy --stage
 eb health
 ```
