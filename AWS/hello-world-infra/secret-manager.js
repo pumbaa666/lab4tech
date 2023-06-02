@@ -12,23 +12,39 @@
 
 const AWS = require('aws-sdk');
 const region = "eu-west-1";
+const SECRET_NAME = "dev/testing";
 
-const secretName = "dev/test";
+// Create your secret with one of the following commands in a CLI:
+// aws secretsmanager create-secret --name dev/testing --secret-string "super-secret!"
+// aws secretsmanager create-secret --name dev/testing --secret-string file://secret.json # create the file `secret.json` first
+// https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/create-secret.html
 
 // Create a Secrets Manager client
 const client = new AWS.SecretsManager({
     region: region
 });
 
-const getSecret = async () => {
+async function getSecret(secretName) {
     const request = {
         SecretId: secretName
     };
 
     try {
         const data = await client.getSecretValue(request).promise();
-        const secret = data.SecretString;
-        // Your code goes here.
+        const secretValue = data.SecretString;
+        console.log("DEBUG secret : " + secretValue);
+        return secretValue;
     } catch (e) {
-        //For a list of exceptions thrown, see
-        //https://docs.aws.amazon.com/secretsmanager/latest/apire
+        console.log("error : " + e);
+        return null;
+    }
+}
+
+// Get secret asynchronously
+getSecret(SECRET_NAME).then((secretValue) => {
+    console.log("secret : " + secretValue);
+    // Your code goes here.
+    
+}).catch((err) => {
+    console.log("error : " + err);
+});

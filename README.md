@@ -59,3 +59,26 @@ X-Ray
 
 https://youtu.be/RrKRN9zRBWs?t=10547
 Cheat sheet : https://youtu.be/RrKRN9zRBWs?t=12134
+
+KMS : Key Management Service
+---
+
+https://youtu.be/RrKRN9zRBWs?t=14690
+Une checkbox pour crypter ? --> KMS
+
+HSM : https://youtu.be/RrKRN9zRBWs?t=14761
+
+
+Cognito
+---
+
+https://youtu.be/RrKRN9zRBWs?t=15272
+
+Cognito Sync (uses SNS) : https://youtu.be/RrKRN9zRBWs?t=15594
+
+
+SNS
+---
+
+SMS, email, webhooks, lambdas, SQS, mobile notif
+https://youtu.be/RrKRN9zRBWs?t=15991
