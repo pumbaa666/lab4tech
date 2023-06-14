@@ -16,7 +16,11 @@ http.createServer((request, response) => {
     });
 
     // 2. Write the announced text to the body of the page
-    response.write("It still works!<br/>WEBAPP_VERSION : "+VERSION);
+    response.write("<html><body>" +
+        "<font color = 'lightgreen' size = 40>It works!</font><br/><br/>" +
+        "WEBAPP_VERSION : " + VERSION + "<br><br>" +
+        "<img src = \"https://media1.giphy.com/media/TmT51OyQLFD7a/giphy.gif?cid=ecf05e47p45gq3fnf4ezz5pamrk58tgwmekgs1w1ozcag95t&ep=v1_gifs_search&rid=giphy.gif&ct=g\"/>"+
+        "</body></html>");
 
     // 3. Tell the server that all of the response headers and body have been sent
     response.end();
