@@ -236,7 +236,8 @@ git push
 
 or initialize yours with `git init --initial-branch=main`
 
-**Initialize the Elasticbeanstalk environment with prompt**
+
+<a name="create-eb-env">**Initialize the Elasticbeanstalk environment with prompt**</a>
 
 Run the following command to initialize your environment interactively : `eb init hello-world-app --platform node.js-18`, it will create a `.elasticbeanstalk` hidden folder with some config files.
 
