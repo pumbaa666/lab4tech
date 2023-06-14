@@ -14,21 +14,21 @@ Deploying a full environment can be a tedious task with lots of screens to param
     - [Load balancers](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#LoadBalancers:)
     - [SSH key pairs](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#KeyPairs:)
     
-All this configuration should be treated as code, versionned, checked and deployed like it, as recommanded by Amazon and the Design Pattern [**Infrastructure as Code (IaC)**](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/infrastructure-as-code.html)
+All this configuration should be treated as code, versionned, checked and deployed like it, as recommended by Amazon and the Design Pattern [**Infrastructure as Code (IaC)**](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/infrastructure-as-code.html)
 
-Infrastructure as Code is a Design Pattern, not to be mistaken with Infrastructure as a Service (Iaas) who's the service offered by Amazon, and not the 'infrastructure of the project.
+Infrastructure as Code is a _Design Pattern_, not to be mistaken with Infrastructure as a Service (Iaas) who's the service offered by Amazon, and not the infrastructure of the project.
 
-IaaS
+**IaaS**
 Infrastructure as a service (IaaS) is a form of cloud computing that provides virtualized computing resources over the internet. IaaS is one of the three main categories of cloud computing services, alongside software as a service (SaaS) and platform as a service (PaaS).
 
-IaC
+**IaC**
 Practicing infrastructure as code means applying the same rigor of application code development to infrastructure provisioning. All configurations should be defined in a declarative way and stored in a source control system such as AWS CodeCommit or Git, the same as application code. Infrastructure provisioning, orchestration, and deployment should also support the use of the infrastructure as code.
 
-Cons
+**Cons**
 - Everything is CLI. Can be scary.
 - Best tools are on Linux (aws, eb, git, ssh, python, ...).
 
-Pros
+**Pros**
 Once the setup is correctly done
 
 - It's faster and easier to :
@@ -53,7 +53,8 @@ To be able to configure and run an environment with CLI you'll have to :
 - [Initialize GIT](#git-init) (Configure AWS SSO in gitconfig, git init)
 - [Create the environment](#create-eb-env) (eb init/create, config files, ssh keys)
 - [Configure the environment](#conf-eb-env)
-- [Manage the Webapp](#webapp)
+- [Deploy the Webapp](#deploy-webapp)
+- [Manage the Webapp](#manage-webapp)
 
 <a name="create-account">Creating Accounts</a>
 ---
@@ -221,9 +222,9 @@ vi ~/.gitconfig
         UseHttpPath = true
 ```
 
-**Create new env from local src code**
+<a name="create-eb-env">**Create new env from local src code**</a>
 
-`Clone or fork my framework repository
+Clone or fork my framework repository
 ```
 git pull https://github.com/pumbaa666/lab4tech.git
 cd lab4tech/AWS/aws-hello-world-infra # Here is the framework
@@ -237,7 +238,7 @@ git push
 or initialize yours with `git init --initial-branch=main`
 
 
-<a name="create-eb-env">**Initialize the Elasticbeanstalk environment with prompt**</a>
+**Initialize the Elasticbeanstalk environment with prompt**
 
 Run the following command to initialize your environment interactively : `eb init hello-world-app --platform node.js-18`, it will create a `.elasticbeanstalk` hidden folder with some config files.
 
@@ -277,7 +278,7 @@ Select the S3 bucket created with *eb create*, tab *Permission*, box *Object Own
 ![Edit Object Ownership](screenshots/10-enable-acl-3.png)
 ![Enable ACL](screenshots/10-enable-acl-4.png)
 
-**Deploy the Elasticbeanstalk environment with prompt**
+**Create the Elasticbeanstalk environment with prompt**
 
 [Doc](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-create.html)
 
@@ -312,6 +313,8 @@ eb create dev-env --branch_default \
 or run the `./scripts-infra/create-eb.sh` with your custom values.
 
 It will build the application and upload it as a .zip to your [S3 Bucket](https://s3.console.aws.amazon.com/s3/buckets?region=eu-west-1#).
+
+From now on you can deploy your environment to production and launch EC2 instances in a EB environment.
 
 <a name="conf-eb-env">**Configure the environment**</a>
 ---
@@ -406,10 +409,14 @@ option_settings:
     NODEJS_PORT: 1337
 ```
 
-Deploying the app
+
+<a name="deploy-webapp">**Deploy the WebApp**</a>
 ---
 
-<a name="webapp">**Manage the WebApp**</a>
+Now you created the environement, simply run `eb deploy` to launch it, start your instances, etc.
+It will package, copy and deploy the latest version of the Code Commit repository, so be sure to commit all your changes or run `eb deploy --stage` to deploy local version, as testing purpose.
+
+<a name="manage-webapp">**Manage the WebApp**</a>
 ---
 
 **Retrieve the logs**

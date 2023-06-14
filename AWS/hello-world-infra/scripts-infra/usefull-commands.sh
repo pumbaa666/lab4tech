@@ -10,6 +10,7 @@ eb create
 eb deploy
 eb deploy --stage # Deploy without having to commit. Useful for testing and developing purposes.
 eb health
+eb logs --all
 eb ssh
 eb terminate
 

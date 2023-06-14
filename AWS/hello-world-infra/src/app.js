@@ -4,6 +4,7 @@ console.log("Starting webserver");
 
 // https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environments-cfg-softwaresettings.html#environments-cfg-softwaresettings-accessing
 const PORT = process.env.NODEJS_PORT || 1337;
+const VERSION = process.env.WEBAPP_VERSION || "0.0.0";
 console.log("PORT : "+PORT)
 
 // Start a webserver on port 1337
@@ -15,7 +16,7 @@ http.createServer((request, response) => {
     });
 
     // 2. Write the announced text to the body of the page
-    response.write("It still works!");
+    response.write("It still works!<br/>WEBAPP_VERSION : "+VERSION);
 
     // 3. Tell the server that all of the response headers and body have been sent
     response.end();
