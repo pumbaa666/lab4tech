@@ -12,7 +12,7 @@ http.createServer((request, response) => {
     
     // 1. Tell the browser everything is OK (Status code 200), and the data is in plain text
     response.writeHead(200, {
-        'Content-Type': 'text/plain'
+        'Content-Type': 'text/html'
     });
 
     // 2. Write the announced text to the body of the page
