@@ -82,3 +82,11 @@ SNS
 
 SMS, email, webhooks, lambdas, SQS, mobile notif
 https://youtu.be/RrKRN9zRBWs?t=15991
+
+
+SQS
+---
+
+Type of queue (Standards vs FIFO) : https://youtu.be/RrKRN9zRBWs?t=16759
+Visibility (messages can be read twice) : https://youtu.be/RrKRN9zRBWs?t=16902
+Long polling vs Short polling (Long (not default !!) reduce the number of empty response) : https://youtu.be/RrKRN9zRBWs?t=16915

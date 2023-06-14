@@ -223,13 +223,18 @@ vi ~/.gitconfig
 
 **Create new env from local src code**
 
+`Clone or fork my framework repository
 ```
-cd aws-hello-world-node
-git init --initial-branch=main
+git pull https://github.com/pumbaa666/lab4tech.git
+cd lab4tech/AWS/aws-hello-world-infra # Here is the framework
+# duplicate it or fork it or whatever and then
+
 git add -A
 git commit -m "First commit after eb create (CLI)"
 git push
 ```
+
+or initialize yours with `git init --initial-branch=main`
 
 **Initialize the Elasticbeanstalk environment with prompt**
 
