@@ -4,12 +4,21 @@
     "main": "src/app.js",
     "scripts": {
         "start": "node src/app.js",
+        
         "create": "./scripts-infra/create-eb.sh",
         "prod": "eb deploy",
-        "staging": "eb deploy --stage",
+        "launch": "npm run create && npm run prod",
         "kill": "eb terminate",
+        
         "sso": "./scripts-infra/refresh-sso-token.sh --profile pumbaa-admin",
-        "eb-path": "./scripts-infra/refresh-sso-token.sh --profile pumbaa-admin --skip-login"
+        "eb-path": "./scripts-infra/refresh-sso-token.sh --profile pumbaa-admin --skip-login",
+        
+        "ssh": "eb ssh",
+        "logs": "eb logs --all",
+        "printenv": "eb printenv",
+        "status": "eb status",
+        
+        "website": "eb open"
     },
     "dependencies": {
         "aws-sdk": "^2.1389.0",

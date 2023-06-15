@@ -2,7 +2,7 @@ branch-defaults:
   default:
     environment: null
   main:
-    environment: dev-env
+    environment: null
 environment-defaults:
   dev-env:
     branch: main
